@@ -1,6 +1,13 @@
 version: "2.2"
 
 services:
+  petclinic:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: build
+    ports:
+      - 8080:8080
   mysql:
     image: mysql:8.2
     ports:
