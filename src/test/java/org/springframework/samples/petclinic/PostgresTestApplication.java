@@ -21,7 +21,7 @@ import org.springframework.boot.testcontainers.service.connection.ServiceConnect
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.containers.PostgreSQLContainer;
 
 /**
  * PetClinic Spring Boot Application.
@@ -30,17 +30,17 @@ import org.testcontainers.containers.MySQLContainer;
  *
  */
 @Configuration
-public class MysqlTestApplication {
+public class PostgresTestApplication {
 
 	@ServiceConnection
-	@Profile("mysql")
+	@Profile("postgres")
 	@Bean
-	static MySQLContainer<?> container() {
-		return new MySQLContainer<>("mysql:8.2");
+	static PostgreSQLContainer<?> container() {
+		return new PostgreSQLContainer<>("postgres:16.1");
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(PetClinicApplication.class, "--spring.profiles.active=mysql");
+		SpringApplication.run(PetClinicApplication.class, "--spring.profiles.active=postgres");
 	}
 
 }
